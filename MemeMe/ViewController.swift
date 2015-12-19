@@ -68,7 +68,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func keyBoardWillShow(notification: NSNotification) {
+        if bottomTextField.isFirstResponder() {
         self.view.frame.origin.y -= getKeyboardHeight(notification)
+        } else if topTextField.isFirstResponder() {
+            self.view.frame.origin.y = 0
+        }
     }
     
     func keyBoardWillHide(notification: NSNotification) {
