@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,72 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DFh-KG-O3N">
+                                <rect key="frame" x="-2" y="512" width="600" height="44"/>
+                                <subviews>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4R-0M-YFH">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <items>
+                                            <barButtonItem title="Album" id="tWo-4D-xvq" userLabel="Album">
+                                                <connections>
+                                                    <action selector="chooseImageFromLibrary:" destination="BYZ-38-t0r" id="j4T-5M-xGq"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="Eax-gq-LSQ"/>
+                                            <barButtonItem title="Camera" id="VGi-0v-R6h" userLabel="Camera">
+                                                <connections>
+                                                    <action selector="chooseImageFromCamera:" destination="BYZ-38-t0r" id="dpP-Y3-dgO"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CdD-Re-gel">
+                                <rect key="frame" x="20" y="28" width="560" height="484"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Top" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MDx-7Z-Wau" userLabel="Top Text Field">
+                                <rect key="frame" x="20" y="55" width="560" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bottom" textAlignment="center" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CVy-Ni-yAT" userLabel="Bottom Text Field">
+                                <rect key="frame" x="20" y="444" width="560" height="29"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="MDx-7Z-Wau" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="35" id="4oC-2O-jUK"/>
+                            <constraint firstItem="DFh-KG-O3N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-22" id="CKk-c7-mkZ"/>
+                            <constraint firstItem="CVy-Ni-yAT" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Fzt-xr-H9C"/>
+                            <constraint firstItem="CVy-Ni-yAT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Guw-y7-gMH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DFh-KG-O3N" secondAttribute="trailing" constant="-18" id="LTj-UL-HuG"/>
+                            <constraint firstItem="CdD-Re-gel" firstAttribute="leading" secondItem="MDx-7Z-Wau" secondAttribute="leading" id="MnB-g0-Ssu"/>
+                            <constraint firstItem="DFh-KG-O3N" firstAttribute="top" secondItem="CVy-Ni-yAT" secondAttribute="bottom" constant="39" id="TxS-vb-otV"/>
+                            <constraint firstItem="CdD-Re-gel" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="fzI-st-A0Y"/>
+                            <constraint firstItem="MDx-7Z-Wau" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="g9p-FF-pHy"/>
+                            <constraint firstItem="CdD-Re-gel" firstAttribute="trailing" secondItem="MDx-7Z-Wau" secondAttribute="trailing" id="hiY-RD-eVw"/>
+                            <constraint firstItem="MDx-7Z-Wau" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="jLc-Sh-hWu"/>
+                            <constraint firstItem="DFh-KG-O3N" firstAttribute="top" secondItem="CdD-Re-gel" secondAttribute="bottom" id="tIN-Rl-Zf1"/>
+                            <constraint firstItem="DFh-KG-O3N" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="wtc-4f-xBL"/>
+                        </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="backgroundImage" destination="CdD-Re-gel" id="6F2-ts-bjP"/>
+                        <outlet property="bottomTextField" destination="CVy-Ni-yAT" id="jBk-iE-4MS"/>
+                        <outlet property="cameraToolBarButton" destination="VGi-0v-R6h" id="4gK-Wo-pxy"/>
+                        <outlet property="topTextField" destination="MDx-7Z-Wau" id="raR-2k-TDd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="380" y="325"/>
         </scene>
     </scenes>
 </document>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C75C79481C21C2C4008E37AE /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75C79471C21C2C4008E37AE /* TextFieldDelegate.swift */; };
 		C7A8F6621C1528690046CA93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8F6611C1528690046CA93 /* AppDelegate.swift */; };
 		C7A8F6641C1528690046CA93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8F6631C1528690046CA93 /* ViewController.swift */; };
 		C7A8F6671C1528690046CA93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A8F6651C1528690046CA93 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C75C79471C21C2C4008E37AE /* TextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		C7A8F65E1C1528690046CA93 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7A8F6611C1528690046CA93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7A8F6631C1528690046CA93 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				C7A8F6611C1528690046CA93 /* AppDelegate.swift */,
 				C7A8F6631C1528690046CA93 /* ViewController.swift */,
+				C75C79471C21C2C4008E37AE /* TextFieldDelegate.swift */,
 				C7A8F6651C1528690046CA93 /* Main.storyboard */,
 				C7A8F6681C1528690046CA93 /* Assets.xcassets */,
 				C7A8F66A1C1528690046CA93 /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			files = (
 				C7A8F6641C1528690046CA93 /* ViewController.swift in Sources */,
 				C7A8F6621C1528690046CA93 /* AppDelegate.swift in Sources */,
+				C75C79481C21C2C4008E37AE /* TextFieldDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +289,7 @@
 				C7A8F6721C1528690046CA93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
