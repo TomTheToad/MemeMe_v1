@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C75C79481C21C2C4008E37AE /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75C79471C21C2C4008E37AE /* TextFieldDelegate.swift */; };
+		C79770AA1C25A62D00D86735 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79770A91C25A62D00D86735 /* Meme.swift */; };
 		C7A8F6621C1528690046CA93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8F6611C1528690046CA93 /* AppDelegate.swift */; };
 		C7A8F6641C1528690046CA93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8F6631C1528690046CA93 /* ViewController.swift */; };
 		C7A8F6671C1528690046CA93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A8F6651C1528690046CA93 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		C75C79471C21C2C4008E37AE /* TextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
+		C79770A91C25A62D00D86735 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		C7A8F65E1C1528690046CA93 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7A8F6611C1528690046CA93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7A8F6631C1528690046CA93 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				C7A8F6681C1528690046CA93 /* Assets.xcassets */,
 				C7A8F66A1C1528690046CA93 /* LaunchScreen.storyboard */,
 				C7A8F66D1C1528690046CA93 /* Info.plist */,
+				C79770A91C25A62D00D86735 /* Meme.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7A8F6641C1528690046CA93 /* ViewController.swift in Sources */,
+				C79770AA1C25A62D00D86735 /* Meme.swift in Sources */,
 				C7A8F6621C1528690046CA93 /* AppDelegate.swift in Sources */,
 				C75C79481C21C2C4008E37AE /* TextFieldDelegate.swift in Sources */,
 			);

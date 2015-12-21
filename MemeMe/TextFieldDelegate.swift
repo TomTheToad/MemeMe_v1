@@ -10,6 +10,13 @@ import UIKit
 
 class TextFieldDelegate: NSObject, UITextFieldDelegate {
     
+    // Fields
+//    var textFieldString: String
+//    
+//    override init() {
+//        self.textFieldString = "change this value"
+//    }
+    
     func textFieldDidBeginEditing(textField: UITextField) {
         textField.text = ""
         
@@ -22,24 +29,18 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
         
         textField.defaultTextAttributes = textAreaAttributes
         textField.textAlignment = .Center
+        
+        // self.textFieldString = textField.text!
+        
+//        if let textFieldStringValue = textField.text {
+//            self.textFieldString = textFieldStringValue
+//            print("String value: " + textFieldStringValue)
+//        }
+//        
+//        print("value: " + toString())
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        
-//        let font = UIFont(name: "Verdana", size: 54.0)
-//
-//        let enteredText = textField.text!
-//        let mutableEnteredText = NSMutableAttributedString(
-//            string: enteredText,
-//            attributes: [
-//                NSFontAttributeName: font!,
-//                NSStrokeColorAttributeName: UIColor.blackColor(),
-//                NSStrokeWidthAttributeName: -4.0,
-//                NSForegroundColorAttributeName: UIColor.whiteColor(),
-//                
-//            ])
-//        
-//        textField.attributedText = mutableEnteredText
 
     }
     
@@ -48,5 +49,10 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
         
         return true;
     }
+    
+//    // Getter
+//    func toString() -> String {
+//        return self.textFieldString
+//    }
     
 }

@@ -15,6 +15,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var cameraToolBarButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
+    @IBOutlet weak var topToolBar: UIToolbar!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     // Delegates
     let topTextFieldDelegate = TextFieldDelegate()
@@ -39,6 +42,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
     }
     
+    /* Image choice methods */
+    
     @IBAction func chooseImageFromLibrary(sender: AnyObject) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -61,11 +66,58 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.backgroundImage.image = selectedImage
         }
         self.dismissViewControllerAnimated(true, completion: nil)
+        
+        shareButton.enabled = true
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    /* Meme save methods */
+    
+    func generateMemedImage() -> UIImage {
+        
+        // Hide toolbars
+        topToolBar.hidden = true
+        bottomToolbar.hidden = true
+        
+        // Render image from view
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        // Show toolbars
+        topToolBar.hidden = false
+        bottomToolbar.hidden = false
+        
+        return memedImage
+    }
+    
+    func saveMeme() -> Meme {
+        // Fields
+        var topString = ""
+        var bottomString = ""
+        
+        if let topTextFieldString = topTextField.text {
+            topString = topTextFieldString
+        }
+        
+        if let bottomTextFieldString = bottomTextField.text {
+            bottomString = bottomTextFieldString
+        }
+        
+        let meme = Meme(
+            topTextField: topString,
+            bottomTextField: bottomString,
+            originalImage: (self.backgroundImage.image)!,
+            memedImage: generateMemedImage())
+        
+        return meme
+    }
+    
+    /* View slide for keyboard methods */
     
     func keyBoardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
