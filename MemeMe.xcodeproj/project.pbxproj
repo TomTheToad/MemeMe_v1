@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C737C2991C2E3B2200D841D0 /* FontUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737C2981C2E3B2200D841D0 /* FontUtility.swift */; };
 		C75C79481C21C2C4008E37AE /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75C79471C21C2C4008E37AE /* TextFieldDelegate.swift */; };
 		C79770AA1C25A62D00D86735 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79770A91C25A62D00D86735 /* Meme.swift */; };
 		C7A8F6621C1528690046CA93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8F6611C1528690046CA93 /* AppDelegate.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C737C2981C2E3B2200D841D0 /* FontUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontUtility.swift; sourceTree = "<group>"; };
 		C75C79471C21C2C4008E37AE /* TextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		C79770A91C25A62D00D86735 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		C7A8F65E1C1528690046CA93 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +62,7 @@
 			children = (
 				C7A8F6611C1528690046CA93 /* AppDelegate.swift */,
 				C7A8F6631C1528690046CA93 /* ViewController.swift */,
+				C737C2981C2E3B2200D841D0 /* FontUtility.swift */,
 				C75C79471C21C2C4008E37AE /* TextFieldDelegate.swift */,
 				C7A8F6651C1528690046CA93 /* Main.storyboard */,
 				C7A8F6681C1528690046CA93 /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 			files = (
 				C7A8F6641C1528690046CA93 /* ViewController.swift in Sources */,
 				C79770AA1C25A62D00D86735 /* Meme.swift in Sources */,
+				C737C2991C2E3B2200D841D0 /* FontUtility.swift in Sources */,
 				C7A8F6621C1528690046CA93 /* AppDelegate.swift in Sources */,
 				C75C79481C21C2C4008E37AE /* TextFieldDelegate.swift in Sources */,
 			);

@@ -42,8 +42,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
     }
     
-    /* Image choice methods */
     
+    /* Image choice methods */
     @IBAction func chooseImageFromLibrary(sender: AnyObject) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -64,18 +64,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             backgroundImage.contentMode = .ScaleAspectFill
             self.backgroundImage.image = selectedImage
+            shareButton.enabled = true
         }
         self.dismissViewControllerAnimated(true, completion: nil)
         
-        shareButton.enabled = true
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    /* Meme save methods */
     
+    /* Meme save methods */
     func generateMemedImage() -> UIImage {
         
         // Hide toolbars
@@ -117,8 +117,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return meme
     }
     
-    /* View slide for keyboard methods */
     
+    /* View slide for keyboard methods */
     func keyBoardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
         self.view.frame.origin.y -= getKeyboardHeight(notification)
@@ -146,6 +146,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.CGRectValue().height
     }
+    
+    @IBAction func shareMeme(sender: AnyObject) {
+        let meme = saveMeme()
+        let memeToShare = [meme.memedImage]
+        let activityViewController = UIActivityViewController(activityItems: memeToShare, applicationActivities: nil)
+        
+        self.presentViewController(activityViewController, animated: true, completion: nil)
+    }
+    
+//    func sendMemeToActivityViewController() {
+//        
+//        let memeToShare = [generateMemedImage()]
+//        let activityViewController = UIActivityViewController(activityItems: memeToShare, applicationActivities: nil)
+//        
+//        self.presentViewController(activityViewController, animated: true, completion: nil)
+//    }
     
 }
 

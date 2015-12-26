@@ -11,17 +11,17 @@ import UIKit
 class TextFieldDelegate: NSObject, UITextFieldDelegate {
     
     // Fields
-//    var textFieldString: String
-//    
-//    override init() {
-//        self.textFieldString = "change this value"
-//    }
+    var font: UIFont
+    
+    override init() {
+        self.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!
+    }
     
     func textFieldDidBeginEditing(textField: UITextField) {
         textField.text = ""
         
         let textAreaAttributes : [String : AnyObject] = [
-            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSFontAttributeName : font,
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSStrokeWidthAttributeName : -3.0,
             NSForegroundColorAttributeName : UIColor.whiteColor(),
@@ -30,14 +30,6 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
         textField.defaultTextAttributes = textAreaAttributes
         textField.textAlignment = .Center
         
-        // self.textFieldString = textField.text!
-        
-//        if let textFieldStringValue = textField.text {
-//            self.textFieldString = textFieldStringValue
-//            print("String value: " + textFieldStringValue)
-//        }
-//        
-//        print("value: " + toString())
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
@@ -50,9 +42,11 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
         return true;
     }
     
-//    // Getter
-//    func toString() -> String {
-//        return self.textFieldString
-//    }
+    func setNewFont(newFont: UIFont) {
+        self.font = newFont
+    }
     
+    func returnToDefaultFont() {
+        self.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!
+    }
 }
