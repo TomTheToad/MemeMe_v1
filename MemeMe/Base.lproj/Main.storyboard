@@ -48,42 +48,48 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hh8-be-Djc"/>
-                                    <barButtonItem title="FONT" id="vzR-HU-6iz"/>
+                                    <barButtonItem title="FONT" id="vzR-HU-6iz">
+                                        <connections>
+                                            <segue destination="HwH-xN-Ago" kind="popoverPresentation" identifier="selectFont" popoverAnchorBarButtonItem="vzR-HU-6iz" id="NeL-H9-9We">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CdD-Re-gel">
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CdD-Re-gel">
                                 <rect key="frame" x="0.0" y="64" width="600" height="448"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bottom" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CVy-Ni-yAT" userLabel="Bottom Text Field">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bottom" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CVy-Ni-yAT" userLabel="Bottom Text Field">
                                 <rect key="frame" x="20" y="444" width="560" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Top" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MDx-7Z-Wau" userLabel="Top Text Field">
-                                <rect key="frame" x="20" y="89" width="560" height="29"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Top" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MDx-7Z-Wau" userLabel="Top Text Field">
+                                <rect key="frame" x="20" y="92" width="560" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="CdD-Re-gel" firstAttribute="top" secondItem="oTC-WW-kLv" secondAttribute="bottom" id="4en-47-Z7O"/>
-                            <constraint firstItem="MDx-7Z-Wau" firstAttribute="top" secondItem="oTC-WW-kLv" secondAttribute="bottom" constant="25" id="AHx-Yi-bf9"/>
-                            <constraint firstItem="CVy-Ni-yAT" firstAttribute="leading" secondItem="MDx-7Z-Wau" secondAttribute="leading" id="C3B-GW-zER"/>
-                            <constraint firstItem="oTC-WW-kLv" firstAttribute="trailing" secondItem="CdD-Re-gel" secondAttribute="trailing" id="CzR-s5-7z6"/>
-                            <constraint firstItem="oTC-WW-kLv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DV2-OA-wlP"/>
-                            <constraint firstItem="MDx-7Z-Wau" firstAttribute="centerX" secondItem="oTC-WW-kLv" secondAttribute="centerX" id="EuX-QK-tWl"/>
-                            <constraint firstItem="DFh-KG-O3N" firstAttribute="top" secondItem="CdD-Re-gel" secondAttribute="bottom" id="Nh2-fO-HVE"/>
-                            <constraint firstItem="DFh-KG-O3N" firstAttribute="top" secondItem="CVy-Ni-yAT" secondAttribute="bottom" constant="39" id="QW2-vo-xHK"/>
-                            <constraint firstItem="oTC-WW-kLv" firstAttribute="leading" secondItem="CdD-Re-gel" secondAttribute="leading" id="QxA-At-eNx"/>
-                            <constraint firstItem="DFh-KG-O3N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-22" id="W6W-Qm-u0k"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DFh-KG-O3N" secondAttribute="trailing" constant="-18" id="cRd-Yo-yeL"/>
-                            <constraint firstItem="MDx-7Z-Wau" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ifL-zJ-efU"/>
-                            <constraint firstItem="DFh-KG-O3N" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="lNM-Ht-YSi"/>
-                            <constraint firstAttribute="trailing" secondItem="oTC-WW-kLv" secondAttribute="trailing" id="lZY-CH-Fg1"/>
-                            <constraint firstItem="CVy-Ni-yAT" firstAttribute="trailing" secondItem="MDx-7Z-Wau" secondAttribute="trailing" id="pxY-ER-x1p"/>
-                            <constraint firstItem="oTC-WW-kLv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rzE-O9-2Vt"/>
+                            <constraint firstItem="oTC-WW-kLv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="0sL-1J-zfI"/>
+                            <constraint firstItem="CdD-Re-gel" firstAttribute="leading" secondItem="oTC-WW-kLv" secondAttribute="leading" id="7bJ-Zw-rl7"/>
+                            <constraint firstItem="oTC-WW-kLv" firstAttribute="centerX" secondItem="MDx-7Z-Wau" secondAttribute="centerX" id="Cls-np-WO5"/>
+                            <constraint firstItem="CdD-Re-gel" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FBj-Vs-4E8"/>
+                            <constraint firstItem="DFh-KG-O3N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-22" id="G2E-iG-if8"/>
+                            <constraint firstItem="CVy-Ni-yAT" firstAttribute="trailing" secondItem="MDx-7Z-Wau" secondAttribute="trailing" id="GiW-R0-26K"/>
+                            <constraint firstItem="MDx-7Z-Wau" firstAttribute="top" secondItem="oTC-WW-kLv" secondAttribute="bottom" constant="28" id="HKk-GV-Zuj"/>
+                            <constraint firstAttribute="trailing" secondItem="CdD-Re-gel" secondAttribute="trailing" id="K70-zm-Lob"/>
+                            <constraint firstItem="CdD-Re-gel" firstAttribute="trailing" secondItem="oTC-WW-kLv" secondAttribute="trailing" id="Q5n-4c-umw"/>
+                            <constraint firstItem="CVy-Ni-yAT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="QCs-Vl-0XI"/>
+                            <constraint firstItem="DFh-KG-O3N" firstAttribute="top" secondItem="CdD-Re-gel" secondAttribute="bottom" id="Rbi-QW-XPZ"/>
+                            <constraint firstItem="CVy-Ni-yAT" firstAttribute="leading" secondItem="MDx-7Z-Wau" secondAttribute="leading" id="aGw-fR-CtY"/>
+                            <constraint firstItem="DFh-KG-O3N" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="hV0-wn-kSw"/>
+                            <constraint firstItem="CdD-Re-gel" firstAttribute="top" secondItem="oTC-WW-kLv" secondAttribute="bottom" id="k6A-I3-Lxm"/>
+                            <constraint firstItem="DFh-KG-O3N" firstAttribute="top" secondItem="CVy-Ni-yAT" secondAttribute="bottom" constant="39" id="pxB-o1-XEg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DFh-KG-O3N" secondAttribute="trailing" constant="-18" id="we9-PG-i4I"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -101,6 +107,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="380" y="325"/>
+        </scene>
+        <!--Font Picker View Controller-->
+        <scene sceneID="dRl-xK-8TD">
+            <objects>
+                <viewController id="HwH-xN-Ago" customClass="FontPickerViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FJA-K1-0wm"/>
+                        <viewControllerLayoutGuide type="bottom" id="yCA-pV-ubx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eOt-Br-5CY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xh-cF-eaA">
+                                <rect key="frame" x="0.0" y="90" width="600" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="HwH-xN-Ago" id="zge-Ip-F18"/>
+                                    <outlet property="delegate" destination="HwH-xN-Ago" id="4YA-8v-jL4"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZ8-s5-fOM">
+                                <rect key="frame" x="227" y="484" width="147" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="Set Font"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="fontChosen" id="XbH-m5-YLQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="yCA-pV-ubx" firstAttribute="top" secondItem="NZ8-s5-fOM" secondAttribute="bottom" constant="56" id="HpY-C4-N3q"/>
+                            <constraint firstItem="4xh-cF-eaA" firstAttribute="leading" secondItem="eOt-Br-5CY" secondAttribute="leading" id="K3q-IH-BQq"/>
+                            <constraint firstItem="4xh-cF-eaA" firstAttribute="centerX" secondItem="NZ8-s5-fOM" secondAttribute="centerX" id="aVW-fF-tTZ"/>
+                            <constraint firstItem="4xh-cF-eaA" firstAttribute="top" secondItem="FJA-K1-0wm" secondAttribute="bottom" constant="70" id="opb-Me-RRh"/>
+                            <constraint firstAttribute="trailing" secondItem="4xh-cF-eaA" secondAttribute="trailing" id="wZA-qQ-T8D"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="fontPicker" destination="4xh-cF-eaA" id="AcK-1i-h5D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L1h-9m-1Vp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1148" y="325"/>
         </scene>
     </scenes>
 </document>

@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
+    // Fields
+    var recievedFont = UIFont?()
+    
     // IBOutlets
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var cameraToolBarButton: UIBarButtonItem!
@@ -28,8 +31,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         cameraToolBarButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
+        topTextField.attributedPlaceholder = NSAttributedString(string: "TOP TEXT", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM TEXT", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
         topTextField.delegate = topTextFieldDelegate
         bottomTextField.delegate = bottomTextFieldDelegate
+        checkForFontSelection()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -62,9 +69,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            backgroundImage.contentMode = .ScaleAspectFill
+            backgroundImage.contentMode = .ScaleAspectFit
             self.backgroundImage.image = selectedImage
             shareButton.enabled = true
+            backgroundImage.backgroundColor = UIColor.blackColor()
+            
         }
         self.dismissViewControllerAnimated(true, completion: nil)
         
@@ -77,10 +86,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     /* Meme save methods */
     func generateMemedImage() -> UIImage {
+        // Save view background color
+        let originalViewBG = view.backgroundColor
         
         // Hide toolbars
         topToolBar.hidden = true
         bottomToolbar.hidden = true
+        view.backgroundColor = UIColor.blackColor()
         
         // Render image from view
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -91,6 +103,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Show toolbars
         topToolBar.hidden = false
         bottomToolbar.hidden = false
+        view.backgroundColor = originalViewBG
         
         return memedImage
     }
@@ -155,13 +168,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(activityViewController, animated: true, completion: nil)
     }
     
-//    func sendMemeToActivityViewController() {
-//        
-//        let memeToShare = [generateMemedImage()]
-//        let activityViewController = UIActivityViewController(activityItems: memeToShare, applicationActivities: nil)
-//        
-//        self.presentViewController(activityViewController, animated: true, completion: nil)
-//    }
-    
+    func checkForFontSelection() {
+        if let selectedFont = recievedFont {
+            topTextFieldDelegate.setNewFont(selectedFont)
+            bottomTextFieldDelegate.setNewFont(selectedFont)
+        }
+    }
 }
 
