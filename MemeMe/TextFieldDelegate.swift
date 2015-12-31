@@ -14,6 +14,7 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
         textField.clearsOnBeginEditing = true
         textField.placeholder = nil
         textField.textAlignment = .Center
+        textField.sizeToFit()
         
     }
     
