@@ -17,11 +17,13 @@ class FontPickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     var selectedFont: UIFont?
     var meme: Meme?
     
+    
     // IBOutlets
     @IBOutlet weak var fontPicker: UIPickerView!
     @IBOutlet weak var fontSizeLabel: UITextField!
     @IBOutlet weak var fontSizeSlider: UISlider!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

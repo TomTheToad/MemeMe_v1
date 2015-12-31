@@ -23,6 +23,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     var recievedMeme = Meme?()
 
+    
     // IBOutlets
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var cameraToolBarButton: UIBarButtonItem!
@@ -33,9 +34,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var fontButton: UIBarButtonItem!
     
+    
     // Delegates
     let topTextFieldDelegate = TextFieldDelegate()
     let bottomTextFieldDelegate = TextFieldDelegate()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +48,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Get text field attributes
         let attributes = setFontAttributes()
-//        setFontAttributes()
-        
-        // Apply font attributes
-//        applyFontAttributes(topTextField)
-//        applyFontAttributes(bottomTextField)
         
         // Check for existing Meme info
         checkForMeme()
@@ -76,6 +74,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
+    
     
     // Check for recieved attributes and set appropirately
     func setFontAttributes() -> [String: AnyObject] {
@@ -116,13 +115,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 ]
         return textAttributes
     }
-    
-//    func applyFontAttributes(thisTextField: UITextField) {
-//        thisTextField.font = UIFont(name: self.font!.fontName, size: self.fontSize!)
-//        
-//        thisTextField.textColor = self.fontColor!
-//        thisTextField.
-//    }
     
     
     /* Image choice methods */
@@ -212,6 +204,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     /* View slide for keyboard methods */
+    
     func keyBoardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
         self.view.frame.origin.y -= getKeyboardHeight(notification)
