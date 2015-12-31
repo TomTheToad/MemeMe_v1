@@ -26,16 +26,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var fontButton: UIBarButtonItem!
     
     // Delegates
-    let topTextFieldDelegate = TextFieldDelegate()
-    let bottomTextFieldDelegate = TextFieldDelegate()
+    var topTextFieldDelegate: TextFieldDelegate?
+    var bottomTextFieldDelegate: TextFieldDelegate?
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        topTextFieldDelegate = TextFieldDelegate(thisTextField: topTextField)
+        bottomTextFieldDelegate = TextFieldDelegate(thisTextField: bottomTextField)
+        
         cameraToolBarButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
-        topTextField.attributedPlaceholder = NSAttributedString(string: "TOP TEXT", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-        bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM TEXT", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+//        topTextField.attributedPlaceholder = NSAttributedString(string: "TOP TEXT", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+//        bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM TEXT", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         
         topTextField.delegate = topTextFieldDelegate
         bottomTextField.delegate = bottomTextFieldDelegate
@@ -182,8 +185,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let meme = saveMeme()
         
-        FontViewController.selectedFontSize = topTextFieldDelegate.fontSize
-        FontViewController.selectedFont = topTextFieldDelegate.font
+        FontViewController.selectedFontSize = topTextFieldDelegate!.fontSize
+        FontViewController.selectedFont = topTextFieldDelegate!.font
         FontViewController.meme = meme
         
         FontViewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
@@ -193,25 +196,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func checkForFontSelection() {
         if let selectedFont = recievedFont {
-            topTextFieldDelegate.setNewFont(selectedFont)
-            bottomTextFieldDelegate.setNewFont(selectedFont)
+            topTextFieldDelegate!.font = selectedFont
+            bottomTextFieldDelegate!.font = selectedFont
         }
         
         if let selectedFontSize = recievedFontSize {
-            topTextFieldDelegate.fontSize = selectedFontSize
-            bottomTextFieldDelegate.fontSize = selectedFontSize
+            topTextFieldDelegate!.fontSize = selectedFontSize
+            bottomTextFieldDelegate!.fontSize = selectedFontSize
         }
     }
     
     func checkForMeme() {
         if let thisMeme = recievedMeme {
             topTextField.text = thisMeme.topTextField
-            topTextFieldDelegate.strokeColor = UIColor.blackColor()
-            topTextFieldDelegate.fontColor = UIColor.whiteColor()
+            topTextFieldDelegate!.strokeColor = UIColor.blackColor()
+            topTextFieldDelegate!.fontColor = UIColor.whiteColor()
             
             bottomTextField.text = thisMeme.bottomTextField
-            bottomTextFieldDelegate.strokeColor = UIColor.blackColor()
-            bottomTextFieldDelegate.fontColor = UIColor.whiteColor()
+            bottomTextFieldDelegate!.strokeColor = UIColor.blackColor()
+            bottomTextFieldDelegate!.fontColor = UIColor.whiteColor()
             
             backgroundImage.image = thisMeme.originalImage
             backgroundImage.contentMode = .ScaleAspectFit

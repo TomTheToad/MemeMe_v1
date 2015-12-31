@@ -16,25 +16,43 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
     var fontColor: UIColor
     var strokeColor: UIColor
     
-    override init() {
+//    override init() {
+//        self.fontSize = 40.0
+//        self.fontColor = UIColor.whiteColor()
+//        self.strokeColor = UIColor.blackColor()
+//        self.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: self.fontSize)!
+//    }
+    
+    convenience override init() {
+        self.init(thisTextField: nil)
+    }
+    
+    init(thisTextField: UITextField?) {
         self.fontSize = 40.0
+        self.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: self.fontSize)!
         self.fontColor = UIColor.whiteColor()
         self.strokeColor = UIColor.blackColor()
-        self.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: self.fontSize)!
+        super.init()
+        
+        
+        let textAreaAttributes : [String : AnyObject] = [
+            NSFontAttributeName : self.font,
+            NSStrokeColorAttributeName : self.strokeColor,
+            NSStrokeWidthAttributeName : -3.0,
+            NSForegroundColorAttributeName : self.fontColor,
+        ]
+        
+        thisTextField!.defaultTextAttributes = textAreaAttributes
+        thisTextField!.textAlignment = .Center
     }
+    
+    convenience init(newTextField: UITextField?) {
+        self.init(thisTextField: newTextField)
+    }
+    
     
     func textFieldDidBeginEditing(textField: UITextField) {
         textField.text = ""
-        
-        let textAreaAttributes : [String : AnyObject] = [
-            NSFontAttributeName : font,
-            NSStrokeColorAttributeName : strokeColor,
-            NSStrokeWidthAttributeName : -3.0,
-            NSForegroundColorAttributeName : fontColor,
-        ]
-        
-        textField.defaultTextAttributes = textAreaAttributes
-        textField.textAlignment = .Center
         
     }
     
