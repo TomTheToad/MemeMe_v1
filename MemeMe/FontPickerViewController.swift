@@ -13,22 +13,34 @@ class FontPickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     // Fields
     var fontNamesArray: [String] = []
     var fontsDictionary: [String: UIFont] = [:]
-    var selectedFont: UIFont = UIFont(name: "Copperplate", size: 40)!
+    var selectedFontSize: CGFloat?
+    var selectedFont: UIFont?
+    var meme: Meme?
     
     // IBOutlets
     @IBOutlet weak var fontPicker: UIPickerView!
-    
-    override func viewWillAppear(animated: Bool) {
-        populateFonts()
-    }
+    @IBOutlet weak var fontSizeLabel: UITextField!
+    @IBOutlet weak var fontSizeSlider: UISlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        populateFonts()
+        
+        if let thisFontSize = selectedFontSize {
+            fontSizeLabel.text = String(thisFontSize)
+            fontSizeSlider.value = Float(thisFontSize)
+        }
+        
         fontPicker.dataSource = self
         fontPicker.delegate = self
-        fontPicker.selectRow(10, inComponent: 0, animated: true)
-
-        // Do any additional setup after loading the view.
+        
+        if let thisFont = selectedFont {
+            if fontNamesArray.contains(thisFont.familyName){
+                let indexOfFont = fontNamesArray.indexOf(thisFont.familyName)
+                fontPicker.selectRow(indexOfFont!, inComponent: 0, animated: true)
+            }
+        }
     }
     
     func populateFonts() {
@@ -55,15 +67,21 @@ class FontPickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedFont = fontsDictionary[fontNamesArray[row]]!
+    }
+    
+    @IBAction func fontSizeSliderHasChanged(sender: AnyObject) {
+        let newFontSize = fontSizeSlider.value
         
-//        print("fontNamesArray value= " + fontNamesArray[row])
-//        print("selected font from dict= " + String(selectedFont))
+        fontSizeLabel.text = newFontSize.description
+        selectedFontSize = CGFloat(newFontSize)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "fontChosen") {
             let MainVC:ViewController = segue.destinationViewController as! ViewController
             MainVC.recievedFont = selectedFont
+            MainVC.recievedFontSize = selectedFontSize
+            MainVC.recievedMeme = meme
         }
     }
 }

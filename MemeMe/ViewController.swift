@@ -12,6 +12,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // Fields
     var recievedFont = UIFont?()
+    var recievedFontSize = CGFloat?()
+    var recievedMeme = Meme?()
     
     // IBOutlets
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -21,6 +23,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var topToolBar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var fontButton: UIBarButtonItem!
     
     // Delegates
     let topTextFieldDelegate = TextFieldDelegate()
@@ -37,6 +40,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topTextField.delegate = topTextFieldDelegate
         bottomTextField.delegate = bottomTextFieldDelegate
         checkForFontSelection()
+        checkForMeme()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -112,6 +116,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Fields
         var topString = ""
         var bottomString = ""
+        var bgImage = UIImage(named: "defaultImage")
         
         if let topTextFieldString = topTextField.text {
             topString = topTextFieldString
@@ -121,10 +126,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             bottomString = bottomTextFieldString
         }
         
+        if let thisImage = self.backgroundImage.image {
+            bgImage = thisImage
+        }
+        
         let meme = Meme(
             topTextField: topString,
             bottomTextField: bottomString,
-            originalImage: (self.backgroundImage.image)!,
+            originalImage: bgImage!,
             memedImage: generateMemedImage())
         
         return meme
@@ -168,10 +177,46 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(activityViewController, animated: true, completion: nil)
     }
     
+    @IBAction func modifyFont(sender: AnyObject) {
+        let FontViewController: FontPickerViewController = storyboard?.instantiateViewControllerWithIdentifier("FontPickerViewController") as! FontPickerViewController
+        
+        let meme = saveMeme()
+        
+        FontViewController.selectedFontSize = topTextFieldDelegate.fontSize
+        FontViewController.selectedFont = topTextFieldDelegate.font
+        FontViewController.meme = meme
+        
+        FontViewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        
+        presentViewController(FontViewController, animated: true, completion: nil)
+    }
+    
     func checkForFontSelection() {
         if let selectedFont = recievedFont {
             topTextFieldDelegate.setNewFont(selectedFont)
             bottomTextFieldDelegate.setNewFont(selectedFont)
+        }
+        
+        if let selectedFontSize = recievedFontSize {
+            topTextFieldDelegate.fontSize = selectedFontSize
+            bottomTextFieldDelegate.fontSize = selectedFontSize
+        }
+    }
+    
+    func checkForMeme() {
+        if let thisMeme = recievedMeme {
+            topTextField.text = thisMeme.topTextField
+            topTextFieldDelegate.strokeColor = UIColor.blackColor()
+            topTextFieldDelegate.fontColor = UIColor.whiteColor()
+            
+            bottomTextField.text = thisMeme.bottomTextField
+            bottomTextFieldDelegate.strokeColor = UIColor.blackColor()
+            bottomTextFieldDelegate.fontColor = UIColor.whiteColor()
+            
+            backgroundImage.image = thisMeme.originalImage
+            backgroundImage.contentMode = .ScaleAspectFit
+            // backgroundImage.backgroundColor = UIColor.blackColor()
+            
         }
     }
 }

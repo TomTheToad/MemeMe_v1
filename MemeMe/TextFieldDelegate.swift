@@ -12,9 +12,15 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
     
     // Fields
     var font: UIFont
+    var fontSize: CGFloat
+    var fontColor: UIColor
+    var strokeColor: UIColor
     
     override init() {
-        self.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!
+        self.fontSize = 40.0
+        self.fontColor = UIColor.whiteColor()
+        self.strokeColor = UIColor.blackColor()
+        self.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: self.fontSize)!
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -22,9 +28,9 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
         
         let textAreaAttributes : [String : AnyObject] = [
             NSFontAttributeName : font,
-            NSStrokeColorAttributeName : UIColor.blackColor(),
+            NSStrokeColorAttributeName : strokeColor,
             NSStrokeWidthAttributeName : -3.0,
-            NSForegroundColorAttributeName : UIColor.whiteColor(),
+            NSForegroundColorAttributeName : fontColor,
         ]
         
         textField.defaultTextAttributes = textAreaAttributes
