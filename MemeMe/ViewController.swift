@@ -11,10 +11,18 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     // Fields
-    var recievedFont = UIFont?()
-    var recievedFontSize = CGFloat?()
-    var recievedMeme = Meme?()
+    var fontSize = CGFloat?()
+    var font = UIFont?()
+    var fontColor = UIColor?()
+    var strokeColor = UIColor?()
     
+    var receivedFont = UIFont?()
+    var receivedFontSize = CGFloat?()
+    var receivedFontColor = UIColor?()
+    var receivedStrokeColor = UIColor?()
+    
+    var recievedMeme = Meme?()
+
     // IBOutlets
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var cameraToolBarButton: UIBarButtonItem!
@@ -26,24 +34,37 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var fontButton: UIBarButtonItem!
     
     // Delegates
-    var topTextFieldDelegate: TextFieldDelegate?
-    var bottomTextFieldDelegate: TextFieldDelegate?
+    let topTextFieldDelegate = TextFieldDelegate()
+    let bottomTextFieldDelegate = TextFieldDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        topTextFieldDelegate = TextFieldDelegate(thisTextField: topTextField)
-        bottomTextFieldDelegate = TextFieldDelegate(thisTextField: bottomTextField)
-        
+        // Check for camera and enable if available
         cameraToolBarButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
-//        topTextField.attributedPlaceholder = NSAttributedString(string: "TOP TEXT", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-//        bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM TEXT", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        // Get text field attributes
+        let attributes = setFontAttributes()
+//        setFontAttributes()
         
+        // Apply font attributes
+//        applyFontAttributes(topTextField)
+//        applyFontAttributes(bottomTextField)
+        
+        // Check for existing Meme info
+        checkForMeme()
+        
+        // Set text field attributes
+        topTextField.attributedPlaceholder = NSAttributedString(string: "TOP TEXT", attributes: attributes)
+        bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM TEXT", attributes: attributes)
+        topTextField.defaultTextAttributes = attributes
+        bottomTextField.defaultTextAttributes = attributes
+        topTextField.textAlignment = .Center
+        bottomTextField.textAlignment = .Center
+        
+        // Assign text field delegates
         topTextField.delegate = topTextFieldDelegate
         bottomTextField.delegate = bottomTextFieldDelegate
-        checkForFontSelection()
-        checkForMeme()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -55,6 +76,53 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
+    
+    // Check for recieved attributes and set appropirately
+    func setFontAttributes() -> [String: AnyObject] {
+        
+        // check for received font size and set
+        if let newFontSize = self.receivedFontSize {
+            self.fontSize = newFontSize
+        } else {
+            self.fontSize = 40.0
+        }
+        
+        // check for received font and set
+        if let newFont = self.receivedFont {
+            self.font = UIFont(name: newFont.fontName, size: self.fontSize!)
+        } else {
+            self.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: self.fontSize!)
+        }
+        
+        // check for received font color and set
+        if let newFontColor = receivedFontColor {
+            self.fontColor = newFontColor
+        } else {
+            self.fontColor = UIColor.blackColor()
+        }
+        
+        // check for received stroke color and set
+        if let newStrokeColor = receivedStrokeColor {
+            self.strokeColor = newStrokeColor
+        } else {
+            self.strokeColor = UIColor.whiteColor()
+        }
+        
+                let textAttributes : [String : AnyObject] = [
+                    NSFontAttributeName : self.font!,
+                    NSStrokeColorAttributeName : self.strokeColor!,
+                    NSStrokeWidthAttributeName : -3.0,
+                    NSForegroundColorAttributeName : self.fontColor!,
+                ]
+        return textAttributes
+    }
+    
+//    func applyFontAttributes(thisTextField: UITextField) {
+//        thisTextField.font = UIFont(name: self.font!.fontName, size: self.fontSize!)
+//        
+//        thisTextField.textColor = self.fontColor!
+//        thisTextField.
+//    }
     
     
     /* Image choice methods */
@@ -185,40 +253,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let meme = saveMeme()
         
-        FontViewController.selectedFontSize = topTextFieldDelegate!.fontSize
-        FontViewController.selectedFont = topTextFieldDelegate!.font
+        FontViewController.selectedFontSize = self.fontSize
+        FontViewController.selectedFont = self.font
         FontViewController.meme = meme
+        
+        // TODO: add other attributes
         
         FontViewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         
         presentViewController(FontViewController, animated: true, completion: nil)
     }
     
-    func checkForFontSelection() {
-        if let selectedFont = recievedFont {
-            topTextFieldDelegate!.font = selectedFont
-            bottomTextFieldDelegate!.font = selectedFont
-        }
-        
-        if let selectedFontSize = recievedFontSize {
-            topTextFieldDelegate!.fontSize = selectedFontSize
-            bottomTextFieldDelegate!.fontSize = selectedFontSize
-        }
-    }
-    
+
     func checkForMeme() {
         if let thisMeme = recievedMeme {
             topTextField.text = thisMeme.topTextField
-            topTextFieldDelegate!.strokeColor = UIColor.blackColor()
-            topTextFieldDelegate!.fontColor = UIColor.whiteColor()
-            
             bottomTextField.text = thisMeme.bottomTextField
-            bottomTextFieldDelegate!.strokeColor = UIColor.blackColor()
-            bottomTextFieldDelegate!.fontColor = UIColor.whiteColor()
-            
-            backgroundImage.image = thisMeme.originalImage
             backgroundImage.contentMode = .ScaleAspectFit
-            // backgroundImage.backgroundColor = UIColor.blackColor()
+            backgroundImage.image = thisMeme.originalImage
+            backgroundImage.backgroundColor = UIColor.blackColor()
             
         }
     }
