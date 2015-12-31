@@ -138,7 +138,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             backgroundImage.contentMode = .ScaleAspectFit
             self.backgroundImage.image = selectedImage
-            shareButton.enabled = true
+            enableShareButton()
             backgroundImage.backgroundColor = UIColor.blackColor()
             
         }
@@ -257,7 +257,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         presentViewController(FontViewController, animated: true, completion: nil)
     }
     
-
     func checkForMeme() {
         if let thisMeme = recievedMeme {
             topTextField.text = thisMeme.topTextField
@@ -265,7 +264,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             backgroundImage.contentMode = .ScaleAspectFit
             backgroundImage.image = thisMeme.originalImage
             backgroundImage.backgroundColor = UIColor.blackColor()
-            
+            enableShareButton()
+        }
+    }
+    
+    func enableShareButton() {
+        if let BG = backgroundImage {
+            if BG.image != UIImage(named: "defaultImage") {
+                shareButton.enabled = true
+            }
         }
     }
 }
