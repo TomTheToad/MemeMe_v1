@@ -5,6 +5,11 @@
 //  Created by VICTOR ASSELTA on 12/6/15.
 //  Copyright © 2015 TomTheToad. All rights reserved.
 //
+// The initial view controller for a Meme creation tool.
+// Allows user to choose and image by camera or album.
+// Allows user to enter text in two possible text fields.
+// Allows user to share Meme via activity view.
+// Saves Meme to allow for in app persistence.
 
 import UIKit
 
@@ -76,7 +81,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
-    // Check for recieved attributes and set appropirately
+    // Check for received attributes and set appropriately
     func setFontAttributes() -> [String: AnyObject] {
         
         // check for received font size and set
@@ -94,6 +99,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         // check for received font color and set
+        // TODO: add color picker for version 2
         if let newFontColor = receivedFontColor {
             self.fontColor = newFontColor
         } else {
@@ -170,11 +176,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Show toolbars
         topToolBar.hidden = false
         bottomToolbar.hidden = false
+        // Set background to original color
         view.backgroundColor = originalViewBG
         
         return memedImage
     }
     
+    // Method for saving the current Meme
+    // TODO: Version two expand to include coloring
     func saveMeme() -> Meme {
         // Fields
         var topString = ""
@@ -204,7 +213,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     /* View slide for keyboard methods */
-    
     func keyBoardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
         self.view.frame.origin.y -= getKeyboardHeight(notification)
@@ -241,9 +249,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(activityViewController, animated: true, completion: nil)
     }
     
+    // Prepare for and present Font Picker View Controller
     @IBAction func modifyFont(sender: AnyObject) {
         let FontViewController: FontPickerViewController = storyboard?.instantiateViewControllerWithIdentifier("FontPickerViewController") as! FontPickerViewController
         
+        // Save Meme and pass to picker view controller
         let meme = saveMeme()
         
         FontViewController.selectedFontSize = self.fontSize
@@ -251,12 +261,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         FontViewController.meme = meme
         
         // TODO: add other attributes
-        
         FontViewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         
         presentViewController(FontViewController, animated: true, completion: nil)
     }
     
+    // Add an existing Meme if one is available
     func checkForMeme() {
         if let thisMeme = recievedMeme {
             topTextField.text = thisMeme.topTextField
@@ -268,6 +278,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    // Enable share button if conditions exist
     func enableShareButton() {
         if let BG = backgroundImage {
             if BG.image != UIImage(named: "defaultImage") {

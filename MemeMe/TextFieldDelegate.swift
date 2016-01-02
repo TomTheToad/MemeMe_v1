@@ -27,8 +27,4 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
         
         return true;
     }
-    
-//    func returnToDefaultFont() {
-//        self.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!
-//    }
 }

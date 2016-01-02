@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,13 +17,38 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5tk-Vp-cFn">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <items/>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14f-i6-A0G">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items/>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g5h-Om-2Ku">
+                                <rect key="frame" x="0.0" y="72" width="600" height="484"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5tk-Vp-cFn" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" id="4l4-SN-9Lf"/>
+                            <constraint firstItem="14f-i6-A0G" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="8NV-4m-rd5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="14f-i6-A0G" secondAttribute="trailing" constant="-20" id="E5F-qk-Pll"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="14f-i6-A0G" secondAttribute="bottom" id="Gxc-oA-nZj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5tk-Vp-cFn" secondAttribute="trailing" constant="-20" id="Uvy-Yq-FuU"/>
+                            <constraint firstItem="g5h-Om-2Ku" firstAttribute="bottom" secondItem="14f-i6-A0G" secondAttribute="top" id="bEJ-ll-bbQ"/>
+                            <constraint firstItem="g5h-Om-2Ku" firstAttribute="leading" secondItem="5tk-Vp-cFn" secondAttribute="leading" id="cvA-oG-DF8"/>
+                            <constraint firstItem="5tk-Vp-cFn" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="doy-iO-Dxq"/>
+                            <constraint firstItem="g5h-Om-2Ku" firstAttribute="top" secondItem="5tk-Vp-cFn" secondAttribute="bottom" id="hMw-FJ-9cC"/>
+                            <constraint firstItem="g5h-Om-2Ku" firstAttribute="trailing" secondItem="5tk-Vp-cFn" secondAttribute="trailing" id="mz7-au-ZLo"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="82" y="373"/>
         </scene>
     </scenes>
 </document>
