@@ -103,14 +103,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let newFontColor = receivedFontColor {
             fontColor = newFontColor
         } else {
-            fontColor = UIColor.blackColor()
+            fontColor = UIColor.whiteColor()
         }
         
         // check for received stroke color and set
         if let newStrokeColor = receivedStrokeColor {
             strokeColor = newStrokeColor
         } else {
-            strokeColor = UIColor.whiteColor()
+            strokeColor = UIColor.blackColor()
         }
         
                 let textAttributes : [String : AnyObject] = [
