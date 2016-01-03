@@ -58,10 +58,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         checkForMeme()
         
         // Set text field attributes
+        // Set textField attributes upon first appearance
         topTextField.attributedPlaceholder = NSAttributedString(string: "TOP TEXT", attributes: attributes)
         bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM TEXT", attributes: attributes)
+        
+        // Set textField attributes for entered text
         topTextField.defaultTextAttributes = attributes
         bottomTextField.defaultTextAttributes = attributes
+        
+        // Assure text fields are centered
         topTextField.textAlignment = .Center
         bottomTextField.textAlignment = .Center
         
@@ -113,12 +118,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             strokeColor = UIColor.blackColor()
         }
         
-                let textAttributes : [String : AnyObject] = [
-                    NSFontAttributeName : font!,
-                    NSStrokeColorAttributeName : strokeColor!,
-                    NSStrokeWidthAttributeName : -3.0,
-                    NSForegroundColorAttributeName : fontColor!,
-                ]
+        let textAttributes : [String : AnyObject] = [
+            NSFontAttributeName : font!,
+            NSStrokeColorAttributeName : strokeColor!,
+            NSStrokeWidthAttributeName : -3.0,
+            NSForegroundColorAttributeName : fontColor!,
+        ]
+        
         return textAttributes
     }
     
@@ -129,7 +135,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
-        
     }
     
     @IBAction func chooseImageFromCamera(sender: AnyObject) {
@@ -137,7 +142,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
         presentViewController(imagePicker, animated: true, completion: nil)
-        
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
@@ -149,7 +153,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
         }
         dismissViewControllerAnimated(true, completion: nil)
-        
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
@@ -215,7 +218,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     /* View slide for keyboard methods */
     func keyBoardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
-        view.frame.origin.y -= getKeyboardHeight(notification)
+            // altered to take the height of the bottom tool bar as well.
+            view.frame.origin.y = -(getKeyboardHeight(notification) - getBottomToolBarHeight())
         } else if topTextField.isFirstResponder() {
             view.frame.origin.y = 0
         }
@@ -239,6 +243,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.CGRectValue().height
+    }
+    
+    // Added this to allow for the height of the bottom tool bar when in landscape mode.
+    func getBottomToolBarHeight() -> CGFloat {
+        return bottomToolbar.frame.height
     }
     
     @IBAction func shareMeme(sender: AnyObject) {

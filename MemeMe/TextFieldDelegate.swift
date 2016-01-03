@@ -15,11 +15,6 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
         textField.placeholder = nil
         textField.textAlignment = .Center
         textField.sizeToFit()
-        
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

@@ -23,7 +23,7 @@ class FontPickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     // IBOutlets
     @IBOutlet weak var fontPicker: UIPickerView!
-    @IBOutlet weak var fontSizeLabel: UITextField!
+    @IBOutlet weak var fontSizeLabel: UILabel!
     @IBOutlet weak var fontSizeSlider: UISlider!
 
     
@@ -64,6 +64,8 @@ class FontPickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     // Begin required UIPickerView methods
+    
+    // Unused but necessary method to satisfy protocol
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
