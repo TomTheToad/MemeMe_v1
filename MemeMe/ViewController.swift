@@ -85,39 +85,39 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func setFontAttributes() -> [String: AnyObject] {
         
         // check for received font size and set
-        if let newFontSize = self.receivedFontSize {
-            self.fontSize = newFontSize
+        if let newFontSize = receivedFontSize {
+            fontSize = newFontSize
         } else {
-            self.fontSize = 40.0
+            fontSize = 40.0
         }
         
         // check for received font and set
-        if let newFont = self.receivedFont {
-            self.font = UIFont(name: newFont.fontName, size: self.fontSize!)
+        if let newFont = receivedFont {
+            font = UIFont(name: newFont.fontName, size: fontSize!)
         } else {
-            self.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: self.fontSize!)
+            font = UIFont(name: "HelveticaNeue-CondensedBlack", size: fontSize!)
         }
         
         // check for received font color and set
         // TODO: add color picker for version 2
         if let newFontColor = receivedFontColor {
-            self.fontColor = newFontColor
+            fontColor = newFontColor
         } else {
-            self.fontColor = UIColor.blackColor()
+            fontColor = UIColor.blackColor()
         }
         
         // check for received stroke color and set
         if let newStrokeColor = receivedStrokeColor {
-            self.strokeColor = newStrokeColor
+            strokeColor = newStrokeColor
         } else {
-            self.strokeColor = UIColor.whiteColor()
+            strokeColor = UIColor.whiteColor()
         }
         
                 let textAttributes : [String : AnyObject] = [
-                    NSFontAttributeName : self.font!,
-                    NSStrokeColorAttributeName : self.strokeColor!,
+                    NSFontAttributeName : font!,
+                    NSStrokeColorAttributeName : strokeColor!,
                     NSStrokeWidthAttributeName : -3.0,
-                    NSForegroundColorAttributeName : self.fontColor!,
+                    NSForegroundColorAttributeName : fontColor!,
                 ]
         return textAttributes
     }
@@ -128,7 +128,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
         
     }
     
@@ -136,24 +136,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
         
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             backgroundImage.contentMode = .ScaleAspectFit
-            self.backgroundImage.image = selectedImage
+            backgroundImage.image = selectedImage
             enableShareButton()
             backgroundImage.backgroundColor = UIColor.blackColor()
             
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
         
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     
@@ -168,8 +168,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         view.backgroundColor = UIColor.blackColor()
         
         // Render image from view
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
@@ -198,7 +198,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             bottomString = bottomTextFieldString
         }
         
-        if let thisImage = self.backgroundImage.image {
+        if let thisImage = backgroundImage.image {
             bgImage = thisImage
         }
         
@@ -215,14 +215,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     /* View slide for keyboard methods */
     func keyBoardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
-        self.view.frame.origin.y -= getKeyboardHeight(notification)
+        view.frame.origin.y -= getKeyboardHeight(notification)
         } else if topTextField.isFirstResponder() {
-            self.view.frame.origin.y = 0
+            view.frame.origin.y = 0
         }
     }
     
     func keyBoardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y = 0
+        view.frame.origin.y = 0
     }
     
     func subscribeToKeyboardNotifications() {
@@ -246,7 +246,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memeToShare = [meme.memedImage]
         let activityViewController = UIActivityViewController(activityItems: memeToShare, applicationActivities: nil)
         
-        self.presentViewController(activityViewController, animated: true, completion: nil)
+        presentViewController(activityViewController, animated: true, completion: nil)
     }
     
     // Prepare for and present Font Picker View Controller
@@ -256,8 +256,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Save Meme and pass to picker view controller
         let meme = saveMeme()
         
-        FontViewController.selectedFontSize = self.fontSize
-        FontViewController.selectedFont = self.font
+        FontViewController.selectedFontSize = fontSize
+        FontViewController.selectedFont = font
         FontViewController.meme = meme
         
         // TODO: add other attributes

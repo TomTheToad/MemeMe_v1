@@ -17,13 +17,6 @@ struct Meme {
     var originalImage: UIImage
     var memedImage: UIImage
     
-    init(topTextField: String, bottomTextField: String, originalImage: UIImage, memedImage: UIImage) {
-        self.topTextField = topTextField
-        self.bottomTextField = bottomTextField
-        self.originalImage = originalImage
-        self.memedImage = memedImage
-    }
-    
     func shareMemeOnFacebook(thisViewController: UIViewController) {
         if(SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook)) {
         let facebookController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
