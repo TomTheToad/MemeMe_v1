@@ -11,22 +11,51 @@ import UIKit
 class MemeTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Fields
-    var memes: [Meme] {
+    var memes: [Meme]? {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     }
-    
+    var numberOfMemes = 0
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        
+        if let memes = memes {
+            numberOfMemes = memes.count
+        }
+        
+        if numberOfMemes > 0 {
+            return memes!.count
+        } else {
+            return 1
+        }
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel!.text =  "Test Text Only"
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableCell", forIndexPath: indexPath) as! MemeTableViewCell
+        
+        let placeHolderMeme = Meme(
+            topTextField: "New",
+            bottomTextField: "Meme",
+            originalImage: UIImage(named: "plusImage")!,
+            memedImage: UIImage(named: "plusImage")!)
+        
+        if numberOfMemes > 0 {
+            if let meme = memes {
+            
+                cell.meme = meme[indexPath.row]
+            }
+
+        } else {
+            
+            cell.meme = placeHolderMeme
+
+        }
+
         return cell
     }
 }

@@ -269,6 +269,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let FontViewController: FontPickerViewController = storyboard?.instantiateViewControllerWithIdentifier("FontPickerViewController") as! FontPickerViewController
         
         // Save Meme and pass to picker view controller
+        // TODO: Change method to save meme for picker
+        // This will solve problem with save meme array and collection view
         let meme = saveMeme()
         
         FontViewController.selectedFontSize = fontSize
