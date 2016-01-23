@@ -260,6 +260,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let meme = saveMeme()
         let memeToShare = [meme.memedImage]
         let activityViewController = UIActivityViewController(activityItems: memeToShare, applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = {
+            (activityType, completion, item, error) in
+            
+            if completion {
+                self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
         
         presentViewController(activityViewController, animated: true, completion: nil)
     }

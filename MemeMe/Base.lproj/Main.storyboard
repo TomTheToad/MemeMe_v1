@@ -7,7 +7,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Table-->
+        <!--Meme Table View Controller-->
         <scene sceneID="FQ8-St-p3O">
             <objects>
                 <viewController id="bWT-Jd-sGu" customClass="MemeTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -94,13 +94,16 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Dqe-Xd-9UA" secondAttribute="trailing" constant="-20" id="zOf-dU-iGx"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Table" id="l5k-qF-u09"/>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="l5k-qF-u09"/>
+                    <connections>
+                        <outlet property="collectionTableView" destination="pNH-cp-cZm" id="iKJ-HH-Jrc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Deb-ci-ZSt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="416" y="8"/>
         </scene>
-        <!--Collection-->
+        <!--Meme Collection View Controller-->
         <scene sceneID="81L-z2-F4x">
             <objects>
                 <viewController id="2DB-nG-mDU" customClass="MemeCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -183,7 +186,10 @@
                             <constraint firstItem="tFy-bh-1zs" firstAttribute="leading" secondItem="Nf7-kl-yNn" secondAttribute="leadingMargin" constant="-20" id="gCk-oq-cg7"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Collection" id="ddH-Lj-rde"/>
+                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="ddH-Lj-rde"/>
+                    <connections>
+                        <outlet property="collectionGridView" destination="pkw-4l-Q2U" id="bbW-mt-YqG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOQ-4h-6qH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -400,6 +406,6 @@
         <image name="defaultImage" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6N7-Qs-kPY"/>
+        <segue reference="saB-hr-vxO"/>
     </inferredMetricsTieBreakers>
 </document>

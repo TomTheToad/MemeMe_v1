@@ -16,6 +16,14 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     var numberOfMemes = 0
     
+    // IBOutlets
+    @IBOutlet weak var collectionTableView: UITableView!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        self.collectionTableView.reloadData()
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

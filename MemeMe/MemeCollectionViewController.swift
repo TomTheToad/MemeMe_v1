@@ -16,6 +16,15 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     var numberOfMemes = 0
     
+    // IBOutlets
+    @IBOutlet weak var collectionGridView: UICollectionView!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        collectionGridView.reloadData()
+    }
+    
+    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -24,6 +33,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         
         if let memes = memes {
             numberOfMemes = memes.count
+            print(numberOfMemes)
         }
         
         if numberOfMemes > 0 {
