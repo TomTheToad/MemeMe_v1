@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe
 //
 //  Created by VICTOR ASSELTA on 12/6/15.
@@ -13,7 +13,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     // Fields
     var fontSize = CGFloat?()
@@ -185,9 +185,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return memedImage
     }
     
-    // Method for saving the current Meme
-    // TODO: Version two expand to include coloring
-    func saveMeme() -> Meme {
+    // Create Meme
+    func createMeme() -> Meme {
         // Fields
         var topString = ""
         var bottomString = ""
@@ -211,6 +210,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             originalImage: bgImage!,
             memedImage: generateMemedImage())
         
+        return meme
+    }
+    
+    // Method for saving the current Meme
+    // TODO: Version two expand to include coloring
+    func saveMeme() -> Meme {
+
+        let meme = createMeme()
         
         // Add meme to meme's array in the application delegate
         let object = UIApplication.sharedApplication().delegate
@@ -278,7 +285,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Save Meme and pass to picker view controller
         // TODO: Change method to save meme for picker
         // This will solve problem with save meme array and collection view
-        let meme = saveMeme()
+        let meme = createMeme()
         
         FontViewController.selectedFontSize = fontSize
         FontViewController.selectedFont = font

@@ -95,10 +95,12 @@ class FontPickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     // Pass seleced values to main view controller "ViewController"
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "fontChosen") {
-            let MainVC:ViewController = segue.destinationViewController as! ViewController
+            let MainVC:MemeEditorViewController = segue.destinationViewController as! MemeEditorViewController
             MainVC.receivedFont = selectedFont
             MainVC.receivedFontSize = selectedFontSize
             MainVC.recievedMeme = meme
+            
+            
         }
     }
 }
