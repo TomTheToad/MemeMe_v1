@@ -27,6 +27,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     var receivedStrokeColor = UIColor?()
     
     var recievedMeme = Meme?()
+    var newMeme = true
+    var memeIndexPath: NSIndexPath?
+    
+    var recievedSegue: String?
 
     
     // IBOutlets
@@ -208,7 +212,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             topTextField: topString,
             bottomTextField: bottomString,
             originalImage: bgImage!,
-            memedImage: generateMemedImage())
+            memedImage: generateMemedImage(),
+            isEditable: true
+        )
         
         return meme
     }
@@ -222,7 +228,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // Add meme to meme's array in the application delegate
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
-        appDelegate.memes.append(meme)
+        
+        if newMeme == true {
+            appDelegate.memes.append(meme)
+        } else {
+            if let indexPath = memeIndexPath {
+                appDelegate.memes[indexPath.row] = meme
+            }
+        }
         
         return meme
     }
@@ -263,6 +276,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         return bottomToolbar.frame.height
     }
     
+    func returnHome() {
+        performSegueWithIdentifier("returnToTable", sender: self)
+    }
+    
     @IBAction func shareMeme(sender: AnyObject) {
         let meme = saveMeme()
         let memeToShare = [meme.memedImage]
@@ -271,7 +288,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             (activityType, completion, item, error) in
             
             if completion {
-                self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                self.returnHome()
             }
         }
         
@@ -283,8 +300,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let FontViewController: FontPickerViewController = storyboard?.instantiateViewControllerWithIdentifier("FontPickerViewController") as! FontPickerViewController
         
         // Save Meme and pass to picker view controller
-        // TODO: Change method to save meme for picker
-        // This will solve problem with save meme array and collection view
         let meme = createMeme()
         
         FontViewController.selectedFontSize = fontSize

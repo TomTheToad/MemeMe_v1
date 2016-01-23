@@ -16,6 +16,7 @@ struct Meme {
     var bottomTextField: String
     var originalImage: UIImage
     var memedImage: UIImage
+    var isEditable: Bool = true
     
     func shareMemeOnFacebook(thisViewController: UIViewController) {
         if(SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook)) {

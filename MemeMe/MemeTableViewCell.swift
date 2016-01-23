@@ -10,6 +10,7 @@ import UIKit
 
 class MemeTableViewCell: UITableViewCell {
     
+    
     @IBOutlet private weak var topTextField: UILabel!
     @IBOutlet private weak var bottomTextField: UILabel!
     @IBOutlet private weak var backgroundImage: UIImageView!
@@ -23,16 +24,4 @@ class MemeTableViewCell: UITableViewCell {
             }
         }
     }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

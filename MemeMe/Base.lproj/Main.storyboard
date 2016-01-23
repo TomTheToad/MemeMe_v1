@@ -24,7 +24,7 @@
                                 <items>
                                     <barButtonItem systemItem="add" id="Ggg-47-Kho">
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="6N7-Qs-kPY"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="fromTable" id="6N7-Qs-kPY"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -173,7 +173,7 @@
                                 <items>
                                     <barButtonItem systemItem="add" id="EMc-Ms-AOA">
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="saB-hr-vxO"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="fromCollection" id="saB-hr-vxO"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -198,7 +198,7 @@
         <!--Meme Editor View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditor" id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -207,7 +207,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="CdD-Re-gel">
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="CdD-Re-gel">
                                 <rect key="frame" x="0.0" y="64" width="600" height="491"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
@@ -235,7 +235,7 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4R-0M-YFH">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n4R-0M-YFH">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="S8A-QF-OLv"/>
@@ -254,7 +254,7 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bottom" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CVy-Ni-yAT" userLabel="Bottom Text Field">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bottom" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CVy-Ni-yAT" userLabel="Bottom Text Field">
                                 <rect key="frame" x="20" y="479" width="560" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
@@ -291,9 +291,12 @@
                         <outlet property="shareButton" destination="v8S-fZ-Gjg" id="RAB-cS-lZa"/>
                         <outlet property="topTextField" destination="MDx-7Z-Wau" id="raR-2k-TDd"/>
                         <outlet property="topToolBar" destination="oTC-WW-kLv" id="2xB-YM-05D"/>
+                        <segue destination="P4V-f0-vkT" kind="unwind" identifier="returnToTable" unwindAction="unWindToTable:" id="R9U-h1-lqh"/>
+                        <segue destination="P4V-f0-vkT" kind="unwind" identifier="returnToCollection" unwindAction="unWindToCollection:" id="AI7-hS-iUY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="P4V-f0-vkT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1192" y="325"/>
         </scene>
@@ -406,6 +409,6 @@
         <image name="defaultImage" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XbH-m5-YLQ"/>
+        <segue reference="6N7-Qs-kPY"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -33,7 +33,6 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         
         if let memes = memes {
             numberOfMemes = memes.count
-            print(numberOfMemes)
         }
         
         if numberOfMemes > 0 {
@@ -54,7 +53,8 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
             topTextField: "New",
             bottomTextField: "Meme",
             originalImage: UIImage(named: "plusImage")!,
-            memedImage: UIImage(named: "plusImage")!)
+            memedImage: UIImage(named: "plusImage")!,
+            isEditable: false)
 
         
         if numberOfMemes > 0 {
@@ -70,6 +70,41 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         }
         
         return cell
+        
+    }
+    
+    func newMeme() {
+        var editorVC: MemeEditorViewController
+        editorVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditor") as! MemeEditorViewController
+        
+        presentViewController(editorVC, animated: true, completion: nil)
+    }
+    
+    func editMeme(meme: Meme, indexPath: NSIndexPath) {
+        var editorVC: MemeEditorViewController
+        editorVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditor") as! MemeEditorViewController
+        editorVC.recievedMeme = meme
+        editorVC.newMeme = false
+        editorVC.memeIndexPath = indexPath
+        
+        presentViewController(editorVC, animated: true, completion: nil)
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if numberOfMemes > 0 {
+            guard memes![indexPath.row].isEditable == true else {
+                newMeme()
+                return
+            }
+            
+            editMeme(memes![indexPath.row], indexPath: indexPath)
+            
+        } else {
+            newMeme()
+        }
+    }
+    
+    @IBAction func unWindToCollection(segue: UIStoryboardSegue) {
         
     }
 }

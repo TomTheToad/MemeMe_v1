@@ -100,7 +100,6 @@ class FontPickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             MainVC.receivedFontSize = selectedFontSize
             MainVC.recievedMeme = meme
             
-            
         }
     }
 }
