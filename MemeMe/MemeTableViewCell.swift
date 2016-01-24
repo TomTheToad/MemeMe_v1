@@ -20,7 +20,7 @@ class MemeTableViewCell: UITableViewCell {
             if let meme = meme {
                 topTextField.text = meme.topTextField
                 bottomTextField.text = meme.bottomTextField
-                backgroundImage.image = meme.originalImage
+                backgroundImage.image = meme.memedImage
             }
         }
     }

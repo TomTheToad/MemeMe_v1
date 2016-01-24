@@ -24,6 +24,19 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         collectionGridView.reloadData()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let spacing: CGFloat = 3.0
+        let dimension = (self.view.frame.size.width - (2 * spacing)) / 3.0
+        
+        let layout = collectionGridView.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        layout.itemSize = CGSizeMake(dimension, dimension)
+        layout.minimumInteritemSpacing = spacing
+        layout.minimumLineSpacing = spacing
+    }
+    
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1

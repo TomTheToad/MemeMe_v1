@@ -108,15 +108,51 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let deleteThisMeme = UITableViewRowAction(style: .Default, title: "Delete!", handler:
-            { action, indexPath in
-                self.deleteMeme(indexPath)
-            })
-        
-        let actions = [deleteThisMeme]
-        return actions
+//    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+//        let deleteThisMeme = UITableViewRowAction(style: .Default, title: "Delete!", handler:
+//            { action, indexPath in
+//                self.deleteMeme(indexPath)
+//            })
+//        
+//        // reload Data
+//        tableView.reloadData()
+//        
+//        // done editing
+//        tableView.editing = false
+//        
+//        let actions = [deleteThisMeme]
+//        return actions
+//    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
     }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == .Delete {
+            if numberOfMemes > 0 {
+                deleteMeme(indexPath)
+            } else {
+                print("unable to delete")
+            }
+        }
+    }
+    
+//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if numberOfMemes > 0 {
+//            guard memes![indexPath.row].isEditable == true else {
+//                
+//                return
+//            }
+//            
+//            deleteMeme(indexPath)
+//            
+//        } else {
+//            let alert = UIAlertController(title: "Not Found", message: "Undable to delete Meme", preferredStyle: UIAlertControllerStyle.Alert)
+//            presentViewController(alert, animated: true, completion: nil)
+//        }
+//    }
     
     @IBAction func unWindToTable(segue: UIStoryboardSegue) {
         
