@@ -18,6 +18,8 @@ struct Meme {
     var memedImage: UIImage
     var isEditable: Bool = true
     
+    
+    // TODO: reference these functions after select in collection
     func shareMemeOnFacebook(thisViewController: UIViewController) {
         if(SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook)) {
         let facebookController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)

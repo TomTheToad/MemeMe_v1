@@ -30,6 +30,7 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        // Set number of rows based on if any memes yet exist
         if let memes = memes {
             numberOfMemes = memes.count
         }
@@ -46,6 +47,7 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableCell", forIndexPath: indexPath) as! MemeTableViewCell
         
+        // place holder for memes if none exist
         let placeHolderMeme = Meme(
             topTextField: "New",
             bottomTextField: "Meme",
@@ -54,6 +56,7 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
             isEditable: false)
         
         
+        // logic to determine if placeholder cell is needed
         if numberOfMemes > 0 {
             if let meme = memes {
             
@@ -95,6 +98,9 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        // verify cell is marked editable.
+        // created to allow protection of placeholder and any example cell
         if numberOfMemes > 0 {
             guard memes![indexPath.row].isEditable == true else {
                 newMeme()
@@ -108,22 +114,6 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-//    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-//        let deleteThisMeme = UITableViewRowAction(style: .Default, title: "Delete!", handler:
-//            { action, indexPath in
-//                self.deleteMeme(indexPath)
-//            })
-//        
-//        // reload Data
-//        tableView.reloadData()
-//        
-//        // done editing
-//        tableView.editing = false
-//        
-//        let actions = [deleteThisMeme]
-//        return actions
-//    }
-    
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
@@ -133,27 +123,14 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         if editingStyle == .Delete {
             if numberOfMemes > 0 {
                 deleteMeme(indexPath)
+                tableView.reloadData()
             } else {
                 print("unable to delete")
             }
         }
     }
     
-//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if numberOfMemes > 0 {
-//            guard memes![indexPath.row].isEditable == true else {
-//                
-//                return
-//            }
-//            
-//            deleteMeme(indexPath)
-//            
-//        } else {
-//            let alert = UIAlertController(title: "Not Found", message: "Undable to delete Meme", preferredStyle: UIAlertControllerStyle.Alert)
-//            presentViewController(alert, animated: true, completion: nil)
-//        }
-//    }
-    
+    // allows method for reaching when calling view is not in nav stack.
     @IBAction func unWindToTable(segue: UIStoryboardSegue) {
         
     }

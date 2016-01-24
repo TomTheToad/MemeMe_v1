@@ -8,9 +8,12 @@
 
 import UIKit
 
+// custom table view cell for meme table
 class MemeTableViewCell: UITableViewCell {
     
-    
+    // TODO: determine if placeholder necessary for top text field?
+    // can have blank fields in table view if none chosen but
+    // this maybe ok. Or set to empty?
     @IBOutlet private weak var topTextField: UILabel!
     @IBOutlet private weak var bottomTextField: UILabel!
     @IBOutlet private weak var backgroundImage: UIImageView!

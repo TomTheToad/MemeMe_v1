@@ -220,7 +220,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     // Method for saving the current Meme
-    // TODO: Version two expand to include coloring
     func saveMeme() -> Meme {
 
         let meme = createMeme()
@@ -276,6 +275,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         return bottomToolbar.frame.height
     }
     
+    // return to table view
+    // TODO: dynamic return so user returns to either table or collection
+    // dependant upon origin.
     func returnHome() {
         performSegueWithIdentifier("returnToTable", sender: self)
     }

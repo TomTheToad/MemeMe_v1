@@ -21,12 +21,15 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
+        // reload to keep table up to date
         collectionGridView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // begin set layout for collection
         let spacing: CGFloat = 3.0
         let dimension = (self.view.frame.size.width - (2 * spacing)) / 3.0
         
@@ -44,6 +47,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
+        // set number of rows based on existence of any memes
         if let memes = memes {
             numberOfMemes = memes.count
         }
@@ -56,12 +60,10 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionCell", forIndexPath: indexPath) as! MemeCollectionViewCell
-//        cell.meme = memes[indexPath.row]
-//        return cell
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         
+        // placeholder if no memes yet exist
         let placeHolderMeme = Meme(
             topTextField: "New",
             bottomTextField: "Meme",
@@ -69,7 +71,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
             memedImage: UIImage(named: "plusImage")!,
             isEditable: false)
 
-        
+        // determine if placeholder is necessary
         if numberOfMemes > 0 {
             if let meme = memes {
                 
@@ -104,6 +106,9 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        // determine if meme can be edited.
+        // if not, assume placeholder, create new meme.
         if numberOfMemes > 0 {
             guard memes![indexPath.row].isEditable == true else {
                 newMeme()

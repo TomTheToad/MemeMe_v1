@@ -28,7 +28,7 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="118" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pNH-cp-cZm">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="118" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pNH-cp-cZm">
                                 <rect key="frame" x="0.0" y="58" width="600" height="493"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -89,7 +89,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pNH-cp-cZm" firstAttribute="top" secondItem="ujF-uL-5Lt" secondAttribute="bottom" constant="38" id="DFf-Eb-t1C"/>
+                            <constraint firstItem="pNH-cp-cZm" firstAttribute="bottom" secondItem="Y4v-eG-vqJ" secondAttribute="top" id="IZt-Xp-tw4"/>
+                            <constraint firstItem="pNH-cp-cZm" firstAttribute="leading" secondItem="Dqe-Xd-9UA" secondAttribute="leading" id="IbH-el-bsM"/>
                             <constraint firstItem="Dqe-Xd-9UA" firstAttribute="leading" secondItem="yYK-mc-uvB" secondAttribute="leadingMargin" constant="-20" id="Tp6-Rp-KDW"/>
+                            <constraint firstItem="pNH-cp-cZm" firstAttribute="trailing" secondItem="Dqe-Xd-9UA" secondAttribute="trailing" id="eVE-HC-3wL"/>
                             <constraint firstItem="Dqe-Xd-9UA" firstAttribute="top" secondItem="ujF-uL-5Lt" secondAttribute="bottom" id="rcy-H4-4Un"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Dqe-Xd-9UA" secondAttribute="trailing" constant="-20" id="zOf-dU-iGx"/>
                         </constraints>
@@ -409,6 +413,6 @@
         <image name="tableIcon_selected" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="saB-hr-vxO"/>
+        <segue reference="6N7-Qs-kPY"/>
     </inferredMetricsTieBreakers>
 </document>
