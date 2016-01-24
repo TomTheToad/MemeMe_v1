@@ -84,7 +84,6 @@ class FontPickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     // Check for font slider change and update value
-    // TODO: Choose to keep slider or add wheel on font picker for version 2?
     @IBAction func fontSizeSliderHasChanged(sender: AnyObject) {
         let newFontSize = fontSizeSlider.value
         

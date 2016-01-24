@@ -125,6 +125,7 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
                 deleteMeme(indexPath)
                 tableView.reloadData()
             } else {
+                // TODO: disable delete or add alert?
                 print("unable to delete")
             }
         }
