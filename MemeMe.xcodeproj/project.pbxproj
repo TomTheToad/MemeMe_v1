@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7553D981C55B3E2008A3475 /* MemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7553D971C55B3E2008A3475 /* MemeDetailViewController.swift */; };
 		C75C79481C21C2C4008E37AE /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75C79471C21C2C4008E37AE /* TextFieldDelegate.swift */; };
 		C77A6DF21C4EF95200711F57 /* MemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A6DF11C4EF95200711F57 /* MemeTableViewController.swift */; };
 		C77A6DF41C4EFCA800711F57 /* MemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77A6DF31C4EFCA800711F57 /* MemeCollectionViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C7553D971C55B3E2008A3475 /* MemeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeDetailViewController.swift; sourceTree = "<group>"; };
 		C75C79471C21C2C4008E37AE /* TextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		C77A6DF11C4EF95200711F57 /* MemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemeTableViewController.swift; path = ../MemeTableViewController.swift; sourceTree = "<group>"; };
 		C77A6DF31C4EFCA800711F57 /* MemeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				C7A8F6631C1528690046CA93 /* MemeEditorViewController.swift */,
 				C75C79471C21C2C4008E37AE /* TextFieldDelegate.swift */,
 				C7A8F6651C1528690046CA93 /* Main.storyboard */,
+				C7553D971C55B3E2008A3475 /* MemeDetailViewController.swift */,
 				C7A8F6681C1528690046CA93 /* Assets.xcassets */,
 				C7A8F66A1C1528690046CA93 /* LaunchScreen.storyboard */,
 				C7A8F66D1C1528690046CA93 /* Info.plist */,
@@ -166,6 +169,7 @@
 				C77A6DF81C4F3DAD00711F57 /* MemeTableViewCell.swift in Sources */,
 				C75C79481C21C2C4008E37AE /* TextFieldDelegate.swift in Sources */,
 				C7FAD7521C2EFCFB005322AE /* FontPickerViewController.swift in Sources */,
+				C7553D981C55B3E2008A3475 /* MemeDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

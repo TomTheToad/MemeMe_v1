@@ -5,6 +5,11 @@
 //  Created by VICTOR ASSELTA on 1/19/16.
 //  Copyright © 2016 TomTheToad. All rights reserved.
 //
+// Meme table collection view
+// Initial view controller
+// Allows user to view sent memes, delete memes via slide,
+// view details of a meme via select,
+// and add new memes via plus icon or selecting placeholder cell
 
 import UIKit
 
@@ -22,6 +27,11 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         self.collectionTableView.reloadData()
+        
+        // Add plus(add meme) button to navigation bar
+        let plusButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "newMeme")
+        
+        navigationItem.rightBarButtonItem = plusButton
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -78,16 +88,6 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         presentViewController(editorVC, animated: true, completion: nil)
     }
     
-    func editMeme(meme: Meme, indexPath: NSIndexPath) {
-        var editorVC: MemeEditorViewController
-        editorVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditor") as! MemeEditorViewController
-        editorVC.recievedMeme = meme
-        editorVC.newMeme = false
-        editorVC.memeIndexPath = indexPath
-        
-        presentViewController(editorVC, animated: true, completion: nil)
-    }
-    
     func deleteMeme(indexPath: NSIndexPath) {
         
         // create link to AppDelegate
@@ -95,6 +95,15 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         let appDelegate = object as! AppDelegate
         
         appDelegate.memes.removeAtIndex(indexPath.row)
+    }
+    
+    func showMemeDetail(meme: Meme, indexPath: NSIndexPath) {
+        var memeDetailVC: MemeDetailViewController
+        memeDetailVC = self.storyboard?.instantiateViewControllerWithIdentifier("memeDetailView") as! MemeDetailViewController
+        memeDetailVC.receivedMeme = meme
+        memeDetailVC.receivedIndexPath = indexPath
+        
+        self.navigationController!.pushViewController(memeDetailVC, animated: true)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -107,7 +116,7 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
                 return
             }
             
-            editMeme(memes![indexPath.row], indexPath: indexPath)
+            showMemeDetail(memes![indexPath.row], indexPath: indexPath)
 
         } else {
             newMeme()

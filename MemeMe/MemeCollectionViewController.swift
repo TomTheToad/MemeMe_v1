@@ -5,6 +5,10 @@
 //  Created by VICTOR ASSELTA on 1/19/16.
 //  Copyright © 2016 TomTheToad. All rights reserved.
 //
+// Meme collection view
+// Presents user with all sent memes in a 3 horizontal gird layout
+// User can add a new meme via select placeholder cell or "plus" button
+// User can view an existing meme via select collection item.
 
 import UIKit
 
@@ -24,6 +28,11 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         
         // reload to keep table up to date
         collectionGridView.reloadData()
+        
+        // add plus(add meme) button to navigation bar
+        let plusButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "newMeme")
+        
+        navigationItem.rightBarButtonItem = plusButton
     }
     
     override func viewDidLoad() {
@@ -95,14 +104,14 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         presentViewController(editorVC, animated: true, completion: nil)
     }
     
-    func editMeme(meme: Meme, indexPath: NSIndexPath) {
-        var editorVC: MemeEditorViewController
-        editorVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditor") as! MemeEditorViewController
-        editorVC.recievedMeme = meme
-        editorVC.newMeme = false
-        editorVC.memeIndexPath = indexPath
+    // send meme to detail view
+    func showMemeDetail(meme: Meme, indexPath: NSIndexPath) {
+        var memeDetailVC: MemeDetailViewController
+        memeDetailVC = self.storyboard?.instantiateViewControllerWithIdentifier("memeDetailView") as! MemeDetailViewController
+        memeDetailVC.receivedMeme = meme
+        memeDetailVC.receivedIndexPath = indexPath
         
-        presentViewController(editorVC, animated: true, completion: nil)
+        self.navigationController!.pushViewController(memeDetailVC, animated: true)
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -115,7 +124,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
                 return
             }
             
-            editMeme(memes![indexPath.row], indexPath: indexPath)
+            showMemeDetail(memes![indexPath.row], indexPath: indexPath)
             
         } else {
             newMeme()

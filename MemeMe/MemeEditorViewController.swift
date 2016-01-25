@@ -5,7 +5,6 @@
 //  Created by VICTOR ASSELTA on 12/6/15.
 //  Copyright © 2015 TomTheToad. All rights reserved.
 //
-// The initial view controller for a Meme creation tool.
 // Allows user to choose and image by camera or album.
 // Allows user to enter text in two possible text fields.
 // Allows user to share Meme via activity view.
