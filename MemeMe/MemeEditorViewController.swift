@@ -285,8 +285,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         activityViewController.completionWithItemsHandler = {
             (activityType, completion, item, error) in
             
-                // TODO: does not work within below if statement?
-                self.saveMeme()
+            // TODO: does not work within below if statement?
+            self.saveMeme()
             
             if completion {
                 self.returnHome()
