@@ -19,6 +19,7 @@ class FontPickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     var selectedFontSize: CGFloat?
     var selectedFont: UIFont?
     var meme: Meme?
+    var indexPath: NSIndexPath?
     
     
     // IBOutlets
@@ -98,6 +99,8 @@ class FontPickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             MainVC.receivedFont = selectedFont
             MainVC.receivedFontSize = selectedFontSize
             MainVC.recievedMeme = meme
+            MainVC.memeIndexPath = indexPath
+            MainVC.newMeme = false
             
         }
     }

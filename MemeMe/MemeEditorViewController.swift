@@ -28,8 +28,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     var recievedMeme = Meme?()
     var newMeme = true
     var memeIndexPath: NSIndexPath?
-    
-    var recievedSegue: String?
 
     
     // IBOutlets
@@ -306,6 +304,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         FontViewController.selectedFontSize = fontSize
         FontViewController.selectedFont = font
         FontViewController.meme = meme
+        FontViewController.indexPath = memeIndexPath
         
         // TODO: add other attributes
         FontViewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
