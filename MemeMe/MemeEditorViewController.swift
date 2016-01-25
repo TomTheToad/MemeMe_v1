@@ -286,6 +286,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             (activityType, completion, item, error) in
             
             // TODO: does not work within below if statement?
+            // TODO: moving saved meme creates dual call to generateMemedImage()
+            
             self.saveMeme()
             
             if completion {
