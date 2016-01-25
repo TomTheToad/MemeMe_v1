@@ -150,7 +150,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemeCollectionCell" id="pjV-rJ-U3i" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="64" width="130" height="130"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
@@ -220,7 +220,6 @@
         <!--Title-->
         <scene sceneID="4PS-xb-amS">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UZ1-45-xmi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="memeDetailView" id="bPX-5K-VDS" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F8g-RC-Kup"/>
@@ -248,6 +247,7 @@
                         <outlet property="memedImage" destination="i2s-8h-Err" id="kyP-Jd-wpt"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UZ1-45-xmi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1194" y="372"/>
         </scene>
@@ -267,7 +267,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="491"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Top" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MDx-7Z-Wau" userLabel="Top Text Field">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MDx-7Z-Wau" userLabel="Top Text Field">
                                 <rect key="frame" x="20" y="101" width="560" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
@@ -316,7 +316,7 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bottom" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CVy-Ni-yAT" userLabel="Bottom Text Field">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CVy-Ni-yAT" userLabel="Bottom Text Field">
                                 <rect key="frame" x="20" y="430" width="560" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
@@ -324,19 +324,19 @@
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="n4R-0M-YFH" firstAttribute="top" secondItem="CVy-Ni-yAT" secondAttribute="bottom" constant="97" id="2Fa-RB-XAc"/>
                             <constraint firstItem="oTC-WW-kLv" firstAttribute="leading" secondItem="CdD-Re-gel" secondAttribute="leading" id="9vF-FY-6Xp"/>
                             <constraint firstItem="oTC-WW-kLv" firstAttribute="trailing" secondItem="CdD-Re-gel" secondAttribute="trailing" id="Amp-0Z-3Ix"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CVy-Ni-yAT" secondAttribute="bottom" constant="92" id="BnS-Ff-2Ya"/>
                             <constraint firstAttribute="trailing" secondItem="oTC-WW-kLv" secondAttribute="trailing" id="CKg-MQ-jmW"/>
                             <constraint firstItem="CdD-Re-gel" firstAttribute="trailing" secondItem="n4R-0M-YFH" secondAttribute="trailing" id="LwN-Rg-cNI"/>
                             <constraint firstItem="MDx-7Z-Wau" firstAttribute="top" secondItem="oTC-WW-kLv" secondAttribute="bottom" constant="37" id="Ouf-eS-8Tb"/>
                             <constraint firstItem="CdD-Re-gel" firstAttribute="top" secondItem="oTC-WW-kLv" secondAttribute="bottom" id="RI8-u1-HfR"/>
                             <constraint firstAttribute="bottom" secondItem="n4R-0M-YFH" secondAttribute="bottom" id="UgC-N9-Ift"/>
-                            <constraint firstItem="CVy-Ni-yAT" firstAttribute="trailing" secondItem="MDx-7Z-Wau" secondAttribute="trailing" id="Zvh-7g-bEG"/>
+                            <constraint firstItem="CVy-Ni-yAT" firstAttribute="leading" secondItem="MDx-7Z-Wau" secondAttribute="leading" id="WNx-8p-m2s"/>
+                            <constraint firstItem="CVy-Ni-yAT" firstAttribute="trailing" secondItem="MDx-7Z-Wau" secondAttribute="trailing" id="Y0w-9t-zGx"/>
                             <constraint firstItem="oTC-WW-kLv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="aeP-57-IXA"/>
                             <constraint firstItem="CdD-Re-gel" firstAttribute="leading" secondItem="n4R-0M-YFH" secondAttribute="leading" id="i5A-NW-cP0"/>
                             <constraint firstItem="oTC-WW-kLv" firstAttribute="centerX" secondItem="MDx-7Z-Wau" secondAttribute="centerX" id="iop-nz-l0S"/>
-                            <constraint firstItem="CVy-Ni-yAT" firstAttribute="leading" secondItem="MDx-7Z-Wau" secondAttribute="leading" id="p0c-ey-NbY"/>
                             <constraint firstItem="MDx-7Z-Wau" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qZ2-xU-6fJ"/>
                             <constraint firstItem="CdD-Re-gel" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sNf-Te-HnK"/>
                             <constraint firstItem="n4R-0M-YFH" firstAttribute="top" secondItem="CdD-Re-gel" secondAttribute="bottom" constant="1" id="xNN-qa-HQn"/>

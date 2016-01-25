@@ -217,7 +217,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     // Method for saving the current Meme
-    func saveMeme() -> Meme {
+    func saveMeme() {
 
         let meme = createMeme()
         
@@ -232,8 +232,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                 appDelegate.memes[indexPath.row] = meme
             }
         }
-        
-        return meme
     }
     
     
@@ -280,11 +278,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func shareMeme(sender: AnyObject) {
-        let meme = saveMeme()
-        let memeToShare = [meme.memedImage]
+        
+        // TODO: Test below
+        let memeToShare = [generateMemedImage()]
         let activityViewController = UIActivityViewController(activityItems: memeToShare, applicationActivities: nil)
         activityViewController.completionWithItemsHandler = {
             (activityType, completion, item, error) in
+            
+                // TODO: does not work within below if statement?
+                self.saveMeme()
             
             if completion {
                 self.returnHome()

@@ -26,7 +26,7 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        self.collectionTableView.reloadData()
+        collectionTableView.reloadData()
         
         // Add plus(add meme) button to navigation bar
         let plusButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "newMeme")
@@ -103,7 +103,7 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         memeDetailVC.receivedMeme = meme
         memeDetailVC.receivedIndexPath = indexPath
         
-        self.navigationController!.pushViewController(memeDetailVC, animated: true)
+        navigationController!.pushViewController(memeDetailVC, animated: true)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

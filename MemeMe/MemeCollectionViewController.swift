@@ -111,7 +111,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         memeDetailVC.receivedMeme = meme
         memeDetailVC.receivedIndexPath = indexPath
         
-        self.navigationController!.pushViewController(memeDetailVC, animated: true)
+        navigationController!.pushViewController(memeDetailVC, animated: true)
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
