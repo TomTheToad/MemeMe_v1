@@ -317,24 +317,24 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CVy-Ni-yAT" userLabel="Bottom Text Field">
-                                <rect key="frame" x="20" y="430" width="560" height="29"/>
+                                <rect key="frame" x="20" y="460" width="560" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="n4R-0M-YFH" firstAttribute="top" secondItem="CVy-Ni-yAT" secondAttribute="bottom" constant="97" id="2Fa-RB-XAc"/>
+                            <constraint firstItem="n4R-0M-YFH" firstAttribute="top" secondItem="CVy-Ni-yAT" secondAttribute="bottom" constant="67" id="6uQ-IK-MX7"/>
                             <constraint firstItem="oTC-WW-kLv" firstAttribute="leading" secondItem="CdD-Re-gel" secondAttribute="leading" id="9vF-FY-6Xp"/>
                             <constraint firstItem="oTC-WW-kLv" firstAttribute="trailing" secondItem="CdD-Re-gel" secondAttribute="trailing" id="Amp-0Z-3Ix"/>
                             <constraint firstAttribute="trailing" secondItem="oTC-WW-kLv" secondAttribute="trailing" id="CKg-MQ-jmW"/>
+                            <constraint firstItem="CVy-Ni-yAT" firstAttribute="trailing" secondItem="MDx-7Z-Wau" secondAttribute="trailing" id="KEC-4l-WDT"/>
                             <constraint firstItem="CdD-Re-gel" firstAttribute="trailing" secondItem="n4R-0M-YFH" secondAttribute="trailing" id="LwN-Rg-cNI"/>
                             <constraint firstItem="MDx-7Z-Wau" firstAttribute="top" secondItem="oTC-WW-kLv" secondAttribute="bottom" constant="37" id="Ouf-eS-8Tb"/>
                             <constraint firstItem="CdD-Re-gel" firstAttribute="top" secondItem="oTC-WW-kLv" secondAttribute="bottom" id="RI8-u1-HfR"/>
                             <constraint firstAttribute="bottom" secondItem="n4R-0M-YFH" secondAttribute="bottom" id="UgC-N9-Ift"/>
-                            <constraint firstItem="CVy-Ni-yAT" firstAttribute="leading" secondItem="MDx-7Z-Wau" secondAttribute="leading" id="WNx-8p-m2s"/>
-                            <constraint firstItem="CVy-Ni-yAT" firstAttribute="trailing" secondItem="MDx-7Z-Wau" secondAttribute="trailing" id="Y0w-9t-zGx"/>
                             <constraint firstItem="oTC-WW-kLv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="aeP-57-IXA"/>
+                            <constraint firstItem="CVy-Ni-yAT" firstAttribute="leading" secondItem="MDx-7Z-Wau" secondAttribute="leading" id="gdv-vE-eih"/>
                             <constraint firstItem="CdD-Re-gel" firstAttribute="leading" secondItem="n4R-0M-YFH" secondAttribute="leading" id="i5A-NW-cP0"/>
                             <constraint firstItem="oTC-WW-kLv" firstAttribute="centerX" secondItem="MDx-7Z-Wau" secondAttribute="centerX" id="iop-nz-l0S"/>
                             <constraint firstItem="MDx-7Z-Wau" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qZ2-xU-6fJ"/>

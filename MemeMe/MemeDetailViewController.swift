@@ -40,7 +40,7 @@ class MemeDetailViewController: UIViewController {
     // sends current meme to meme editor
     @IBAction func editMeme(sender: UIBarButtonItem) {
         var editorVC: MemeEditorViewController
-        editorVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditor") as! MemeEditorViewController
+        editorVC = storyboard?.instantiateViewControllerWithIdentifier("MemeEditor") as! MemeEditorViewController
         editorVC.recievedMeme = receivedMeme
         editorVC.newMeme = false
         editorVC.memeIndexPath = receivedIndexPath

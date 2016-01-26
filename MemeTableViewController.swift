@@ -83,7 +83,8 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func newMeme() {
         var editorVC: MemeEditorViewController
-        editorVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditor") as! MemeEditorViewController
+        editorVC =
+            storyboard?.instantiateViewControllerWithIdentifier("MemeEditor") as! MemeEditorViewController
         
         presentViewController(editorVC, animated: true, completion: nil)
     }
@@ -99,7 +100,7 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func showMemeDetail(meme: Meme, indexPath: NSIndexPath) {
         var memeDetailVC: MemeDetailViewController
-        memeDetailVC = self.storyboard?.instantiateViewControllerWithIdentifier("memeDetailView") as! MemeDetailViewController
+        memeDetailVC = storyboard?.instantiateViewControllerWithIdentifier("memeDetailView") as! MemeDetailViewController
         memeDetailVC.receivedMeme = meme
         memeDetailVC.receivedIndexPath = indexPath
         

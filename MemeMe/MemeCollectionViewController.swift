@@ -40,7 +40,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
 
         // begin set layout for collection
         let spacing: CGFloat = 3.0
-        let dimension = (self.view.frame.size.width - (2 * spacing)) / 3.0
+        let dimension = (view.frame.size.width - (2 * spacing)) / 3.0
         
         let layout = collectionGridView.collectionViewLayout as! UICollectionViewFlowLayout
         
@@ -99,7 +99,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     
     func newMeme() {
         var editorVC: MemeEditorViewController
-        editorVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditor") as! MemeEditorViewController
+        editorVC = storyboard?.instantiateViewControllerWithIdentifier("MemeEditor") as! MemeEditorViewController
         
         presentViewController(editorVC, animated: true, completion: nil)
     }
@@ -107,7 +107,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     // send meme to detail view
     func showMemeDetail(meme: Meme, indexPath: NSIndexPath) {
         var memeDetailVC: MemeDetailViewController
-        memeDetailVC = self.storyboard?.instantiateViewControllerWithIdentifier("memeDetailView") as! MemeDetailViewController
+        memeDetailVC = storyboard?.instantiateViewControllerWithIdentifier("memeDetailView") as! MemeDetailViewController
         memeDetailVC.receivedMeme = meme
         memeDetailVC.receivedIndexPath = indexPath
         

@@ -12,13 +12,6 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(textField: UITextField) {
         textField.clearsOnBeginEditing = true
-        
-        // TODO: Fix this
-        // remove placeholder nil?
-//        if textField.text == "TOP TEXT" || textField.text == "BOTTOM TEXT" {
-//            textField.text = ""
-//        }
-        
         textField.placeholder = nil
         textField.textAlignment = .Center
         textField.sizeToFit()

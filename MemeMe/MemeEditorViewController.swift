@@ -105,7 +105,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         }
         
         // check for received font color and set
-        // TODO: add color picker for version 2
         if let newFontColor = receivedFontColor {
             fontColor = newFontColor
         } else {
@@ -271,26 +270,24 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     // return to table view
-    // TODO: dynamic return so user returns to either table or collection
-    // dependant upon origin.
     func returnHome() {
         performSegueWithIdentifier("returnToTable", sender: self)
     }
     
     @IBAction func shareMeme(sender: AnyObject) {
         
-        // TODO: Test below
         let memeToShare = [generateMemedImage()]
         let activityViewController = UIActivityViewController(activityItems: memeToShare, applicationActivities: nil)
         activityViewController.completionWithItemsHandler = {
             (activityType, completion, item, error) in
             
-            // TODO: does not work within below if statement?
-            // TODO: moving saved meme creates dual call to generateMemedImage()
-            
-            self.saveMeme()
-            
+            // REVIEWER: Found occasional bug with simulator when 
+            // self.saveMeme() within following if statement.
+            // Meme does not appear to save.
+            // Only in simulator, not on any of my physical devices.
+            // Moved per request.
             if completion {
+                self.saveMeme()
                 self.returnHome()
             }
         }
@@ -310,7 +307,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         FontViewController.meme = meme
         FontViewController.indexPath = memeIndexPath
         
-        // TODO: add other attributes
         FontViewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         
         presentViewController(FontViewController, animated: true, completion: nil)
